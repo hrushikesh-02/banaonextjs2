@@ -8,7 +8,7 @@ const Modal = (props) => {
       <div className="d-flex justify-content-center align-items-center">
         <div
           className="modal fade"
-          id="userModal"
+          id={"userModal" + props.id}
           tabIndex="-1"
           aria-labelledby="userModalLabel"
           aria-hidden="true"

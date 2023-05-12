@@ -8,7 +8,7 @@ const ListItem = (props) => {
     <div
       className={styles.main}
       data-bs-toggle="modal"
-      data-bs-target="#userModal"
+      data-bs-target={"#userModal" + props.id}
     >
       <Modal
         bio={props.bio}
@@ -18,6 +18,7 @@ const ListItem = (props) => {
         username={props.username}
         job={props.job}
         email={props.email}
+        id={props.id}
       />
       <div className={styles.imgSection}>
         <Image src={props.pic} width={50} alt="img" />
