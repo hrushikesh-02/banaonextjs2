@@ -12,7 +12,9 @@ const Detail = (props) => {
           <div className={styles.profileImage}>
             <Image src={userpic} width={150} alt="img" />
           </div>
-          <div className={styles.username}>{props.username}</div>
+          <div className={styles.username}>
+            {props.username ? props.username : "Name"}
+          </div>
           <div className={styles.section}>
             <b>BIO: </b> {props.bio}
           </div>
