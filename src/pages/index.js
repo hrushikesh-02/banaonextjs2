@@ -6,6 +6,7 @@ import ListItem from "../../components/ListItem";
 import userpic from "../../resources/userpic.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Detail from "../../components/Detail";
 
 export default function Home() {
   const [userList, setUserList] = useState([]);
@@ -27,6 +28,15 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const [clickedElement, setclickedElement] = useState({
+    fname: "",
+    lname: "",
+    bio: "",
+    username: "",
+    job: "",
+    email: "",
+  });
+
   return (
     <>
       <Head>
@@ -35,39 +45,51 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className={styles.header}>Users List</h1>
-      <div className={styles.userList}>
-        {loadingStatus ? (
-          <div className={styles.spinners}>
-            <div className="spinner-grow spinner-grow-sm" role="status">
-              <span className="visually-hidden">Loading...</span>
+      <div className={styles.parent}>
+        <div className={styles.userList}>
+          <h1 className={styles.header}>Users List</h1>
+          {loadingStatus ? (
+            <div className={styles.spinners}>
+              <div className="spinner-grow spinner-grow-sm" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <div className="spinner-grow spinner-grow-sm" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <div className="spinner-grow spinner-grow-sm" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
             </div>
-            <div className="spinner-grow spinner-grow-sm" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-            <div className="spinner-grow spinner-grow-sm" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
-
-        {userList.map((item, ind) => {
-          return (
-            <ListItem
-              key={ind}
-              id={ind}
-              pic={userpic}
-              fname={item.profile.firstName}
-              lname={item.profile.lastName}
-              bio={item.Bio}
-              username={item.profile.username}
-              email={item.profile.email}
-              job={item.jobTitle}
-            />
-          );  
-        })}
+          ) : (
+            <></>
+          )}
+          {userList.map((item, ind) => {
+            return (
+              <ListItem
+                key={ind}
+                id={ind}
+                pic={userpic}
+                fname={item.firstName}
+                lname={item.profile.lastName}
+                bio={item.Bio}
+                username={item.profile.username}
+                email={item.profile.email}
+                job={item.jobTitle}
+                updater={setclickedElement}
+              />
+            );
+          })}
+        </div>
+        <div className={styles.detail}>
+          <Detail
+            fname={clickedElement.fname}
+            lname={clickedElement.lname}
+            bio={clickedElement.bio}
+            username={clickedElement.username}
+            email={clickedElement.email}
+            job={clickedElement.job}
+          />
+        </div>
       </div>
     </>
   );

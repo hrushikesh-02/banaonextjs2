@@ -1,39 +1,18 @@
-.main {
-  display: flex;
-  margin-top: 1rem;
-  background-color: #ececec;
-  padding: 0.5rem;
-  gap: 1rem;
-  width: 90%;
-  border-radius: 5px;
-  height: 70px;
-  align-items: center;
-}
-
-.main:hover {
-  background-color: #d4d4d4;
-}
-
-.main:active {
-  background-color: #cbcaca;
-}
-
-.imgSection {
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  overflow: hidden;
+.header {
+  background-color: #c4dfff;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-weight: 200;
+  border-radius: 10px 10px 0px 0px;
 }
 
-.usernameSection {
-  width: 80%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 1.5rem;
+.detailParent {
+  /* background-color: red; */
+  width: 45%;
+  position: fixed;
 }
 
 .modalBody {
@@ -49,6 +28,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  margin-top: 1rem;
   justify-content: center;
 }
 
